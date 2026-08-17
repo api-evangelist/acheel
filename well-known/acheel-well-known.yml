@@ -1,0 +1,160 @@
+generated: '2026-08-17'
+method: probed
+source: live probes of /.well-known/ on every Acheel / Charlee host reachable from public pages
+checked: '2026-08-17'
+summary: >-
+  Acheel serves no /.well-known/ discovery document of its own on any host. Every RFC 9116
+  security.txt, RFC 8414 / OIDC discovery, api-catalog, ai-plugin and A2A agent-card path returns
+  404 on www.acheel.com, v2.acheel.com (the live public site), emprunteur.acheel.com, the
+  per-tenant *.widget.acheel.com application host, and on both Charlee hosts (www.charlee.fr
+  marketing, back.charlee.fr broker portal). api.acheel.com, developers.acheel.com and
+  docs.acheel.com do not resolve in DNS at all.
+pointer_basis: >-
+  NO WellKnown pointer and NO SecurityTxt pointer emitted. The only 200 on any /.well-known/ path
+  in this probe is faq.acheel.com/.well-known/security.txt, and that document is NOT Acheel's — it
+  is Intercom's, served because faq.acheel.com is an Intercom-hosted help centre. Its own body says
+  so ("reporting security vulnerabilities to Intercom", Contact https://bugcrowd.com/intercom,
+  Canonical https://app.intercom.com/.well-known/security.txt). Crediting Acheel with a
+  vulnerability-disclosure surface on the strength of its help-desk vendor's security.txt would be
+  a false positive, so it is recorded below as a vendor document, not as an Acheel document, and
+  is deliberately NOT saved into this directory as acheel-security.txt.
+false_positive_watch: >-
+  Two shapes to watch on re-runs. (1) The Intercom security.txt above — a 200 on an Acheel-branded
+  hostname that belongs to a SaaS vendor. Check the Canonical: line before ever wiring SecurityTxt.
+  (2) v2.acheel.com, www.charlee.fr and back.charlee.fr all answer with a styled HTML error page,
+  but they return a real 404 status, so no soft-200 credit is at risk here.
+hosts:
+  - host: https://www.acheel.com
+    note: 301/302 redirect to https://v2.acheel.com/ — the apex/www marketing host
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://v2.acheel.com
+    note: the live public website (redirect target of acheel.com and www.acheel.com)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /robots.txt
+        status: 200
+        note: 'two lines, "User-agent: * Disallow:" — nothing disallowed, no sitemap declared'
+      - path: /sitemap.xml
+        status: 404
+  - host: https://faq.acheel.com
+    note: >-
+      Intercom-hosted help centre on an Acheel hostname (x-intercom-version response header,
+      Intercom CSP). Content is Acheel's; the /.well-known/ surface is Intercom's.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        owner: intercom
+        vendor_document: true
+        canonical: https://app.intercom.com/.well-known/security.txt
+        note: >-
+          Intercom's RFC 9116 policy (Contact https://bugcrowd.com/intercom,
+          mailto:security@intercom.com). Not saved, not pointed at — see pointer_basis.
+      - path: /llms.txt
+        status: 200
+        owner: acheel
+        file: ../llms/acheel-llms.txt
+        note: >-
+          Acheel's own help-centre content ("# Acheel - FAQ", 171 links, all on faq.acheel.com),
+          rendered by Intercom's llms.txt generator. Saved verbatim to llms/.
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+  - host: https://emprunteur.acheel.com
+    note: borrower-insurance (assurance emprunteur) funnel host
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://6ffed2d6-eef3-41e2-b803-d46c94c338c2.widget.acheel.com
+    note: >-
+      per-tenant white-label application host (*.widget.acheel.com), reached from the public
+      Charlee site's client-login link. Laravel app; CSP frame-ancestors https://*.acheel.com.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://www.charlee.fr
+    note: Charlee — Acheel's brand for its partner brokers ("la marque dédiée aux courtiers de proximité d'Acheel")
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://back.charlee.fr
+    note: 'Charlee broker portal, page title "Acheel Omega"; meta robots noindex,nofollow'
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+unresolved_hosts:
+  - host: api.acheel.com
+    dns: NXDOMAIN
+  - host: developers.acheel.com
+    dns: NXDOMAIN
+  - host: docs.acheel.com
+    dns: NXDOMAIN
+  - host: app.acheel.com
+    dns: NXDOMAIN
+  - host: status.acheel.com
+    dns: NXDOMAIN
+  - host: trust.acheel.com
+    dns: NXDOMAIN
+  - host: security.acheel.com
+    dns: NXDOMAIN
+  - host: api.charlee.fr
+    dns: NXDOMAIN
+  - host: dev.acheel.net
+    dns: NXDOMAIN

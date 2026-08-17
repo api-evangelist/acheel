@@ -1,0 +1,29 @@
+generated: '2026-08-17'
+method: searched
+source: https://partners.acheel.com/ (archived partner FAQ) + live probes of every Acheel host
+checked: '2026-08-17'
+summary: >-
+  Acheel publishes no rate limits, because it publishes no API reference at all. Its own partner
+  FAQ confirmed an API exists ("Chez Acheel, nous mettons à votre disposition nos APIs afin de vous
+  faire bénéficier de notre Tech et de nos produits de façon fluide et rapide") but that page is now
+  retired and never carried a reference, a base URL, a quota, a window, or a response-header
+  contract. No RateLimit-*/X-RateLimit-*/Retry-After signalling could be observed either: there is
+  no anonymous API endpoint to observe, and no host answering as an API (api.acheel.com does not
+  resolve).
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+retry_after: null
+evidence:
+  - url: https://partners.acheel.com/
+    note: >-
+      301 to the Charlee broker site; the partner FAQ that stated the APIs exist is gone from the
+      live surface (captured at web.archive.org/web/20251215120501/https://partners.acheel.com/)
+    status: 301
+  - url: https://v2.acheel.com/openapi.json
+    note: no spec on the public site host
+    status: 404
+  - url: https://api.acheel.com/
+    note: NXDOMAIN — no API host resolves, so no live limit could be probed
+    status: 0

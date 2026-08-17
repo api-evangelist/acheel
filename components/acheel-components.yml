@@ -1,0 +1,55 @@
+generated: '2026-08-17'
+method: probed
+source: https://www.charlee.fr/ (public client-login link) + live probes of the widget host
+checked: '2026-08-17'
+summary: >-
+  Acheel's real integration surface for partners is a hosted, per-tenant white-label application
+  served from *.widget.acheel.com, not a downloadable component library. The public Charlee site
+  links a client login at a UUID-keyed subdomain, and that host answers 200 with a Laravel
+  application (XSRF-TOKEN + acheel-session cookies) whose response carries
+  `content-security-policy: frame-ancestors https://*.acheel.com` — i.e. it is built to be embedded
+  in an Acheel-controlled frame, one tenant per subdomain. That is the "marque blanche" / white-label
+  distribution Acheel markets to its B2B2C partners and brokers.
+status: undocumented
+publicly_documented: false
+documentation_note: >-
+  Nothing here comes from an Acheel integration guide, because none is published. Every field below
+  is an observation from a public page or a probed HTTP response, recorded as evidence. There is no
+  loader script, no npm package, no documented embed snippet, no configuration reference and no
+  versioning for this surface on any public Acheel or Charlee page.
+families:
+  - name: Hosted white-label customer area (widget)
+    kind: hosted-tenant-application
+    host_pattern: https://<tenant-uuid>.widget.acheel.com/
+    observed_paths:
+      - /client/login
+    embedding: iframe
+    embedding_evidence: 'content-security-policy: frame-ancestors https://*.acheel.com'
+    tenancy: one subdomain per partner/tenant (UUID-keyed)
+    stack_observed: Laravel (XSRF-TOKEN and acheel-session cookies on the login response)
+    loader_library: null
+    package: null
+    version: null
+    note: >-
+      Reached from the public Charlee homepage's "espace client" link
+      (https://6ffed2d6-eef3-41e2-b803-d46c94c338c2.widget.acheel.com/client/login, HTTP 200). The
+      wildcard parent widget.acheel.com does not resolve on its own (NXDOMAIN) — only tenant
+      subdomains do.
+  - name: Charlee broker platform ("Acheel Omega")
+    kind: hosted-partner-portal
+    url: https://back.charlee.fr/
+    embedding: none observed
+    note: >-
+      HTTP 200, page title "Acheel Omega", meta robots noindex,nofollow, theme attribute
+      data-theme="charlee". The broker-facing console behind the Charlee brand; login-gated, no
+      public reference, no embeddable component published.
+evidence:
+  - url: https://6ffed2d6-eef3-41e2-b803-d46c94c338c2.widget.acheel.com/client/login
+    status: 200
+  - url: https://back.charlee.fr/
+    status: 200
+  - url: https://www.charlee.fr/
+    status: 200
+  - url: https://widget.acheel.com/
+    status: 0
+    note: NXDOMAIN — the wildcard parent is not served

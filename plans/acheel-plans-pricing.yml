@@ -1,0 +1,34 @@
+generated: '2026-08-17'
+method: searched
+source: https://v2.acheel.com/
+checked: '2026-08-17'
+summary: >-
+  Acheel publishes NO API or partner plans. It is a licensed French insurer selling insurance
+  policies, and its published prices are insurance premiums quoted per product (for example
+  "Assurance Habitation à partir de 2,17€/mois" on the property page), obtained through a quote
+  funnel — not tiers of an API product. There is no /pricing page, no developer plan table, no
+  API rate card, and no published cost for the partner/broker API access Acheel says it provides
+  (see conformance/ and x-coverage in apis.yml). Partner economics are set in a brokerage
+  agreement reached through the Charlee partner-registration form, which publishes no figures.
+plan_count: 0
+prices_published: false
+api_plans: none
+currency: null
+billing_period: null
+public_signup_pricing: false
+plans: []
+product_pricing_note: >-
+  Consumer premium teasers exist per insurance line (habitation, auto, santé, animaux, PNO,
+  emprunteur, scolaire, protection juridique, RC pro) and are quote-driven, priced per risk. They
+  are recorded here as context only; they are NOT API plans and must not be counted as such by any
+  downstream rating.
+evidence:
+  - url: https://v2.acheel.com/insurance/property
+    note: '"Assurance Habitation à partir de 2,17€/mois" — quote-driven consumer premium'
+    status: 200
+  - url: https://www.charlee.fr/registration
+    note: broker/partner registration form; no partner pricing, no API plan, no rate card published
+    status: 200
+  - url: https://v2.acheel.com/pricing
+    note: no pricing page exists on the public site
+    status: 404

@@ -1,0 +1,56 @@
+generated: '2026-08-17'
+method: searched
+source: registry searches (npm, PyPI, RubyGems, crates.io, Packagist, NuGet, Maven Central, pkg.go.dev, GitHub)
+checked: '2026-08-17'
+summary: >-
+  Acheel publishes no client libraries. Every public registry search returns zero first-party
+  packages, and there is no Acheel GitHub organisation (github.com/acheel is an unrelated individual
+  user account; api.github.com/orgs/acheel returns 404). This is consistent with the rest of the
+  profile: Acheel's API is a partner integration reached through a brokerage agreement, not a
+  self-serve developer product, so there is nothing to wrap in an SDK publicly.
+pointer_basis: >-
+  NO SDKs pointer and NO Packages pointer emitted — there is no package to point at. This file exists
+  to record that the registries were checked and were empty, so a later round does not re-litigate it.
+package_count: 0
+packages: []
+registries_checked:
+  - registry: npm
+    query: acheel
+    endpoint: https://registry.npmjs.org/-/v1/search?text=acheel
+    results: 0
+  - registry: pypi
+    query: acheel
+    endpoint: https://pypi.org/pypi/acheel/json
+    status: 404
+    results: 0
+  - registry: rubygems
+    query: acheel
+    endpoint: https://rubygems.org/api/v1/gems/acheel.json
+    status: 404
+    results: 0
+  - registry: crates.io
+    query: acheel
+    endpoint: https://crates.io/api/v1/crates?q=acheel
+    results: 0
+  - registry: packagist
+    query: acheel
+    endpoint: https://packagist.org/search.json?q=acheel
+    results: 0
+    note: matches returned are unrelated ("awheel/...") — no Acheel package
+  - registry: nuget
+    query: acheel
+    endpoint: https://azuresearch-usnc.nuget.org/query?q=acheel
+    results: 0
+  - registry: maven-central
+    query: acheel
+    endpoint: https://search.maven.org/solrsearch/select?q=acheel
+    results: 0
+  - registry: github
+    query: acheel
+    endpoint: https://api.github.com/orgs/acheel
+    status: 404
+    results: 0
+    note: >-
+      Repository search surfaces only third-party and employee-personal repos (for example
+      Joehann/POC-Acheel-CleanArchi_with_zustand, a clean-architecture proof of concept, and
+      aelbaz-acheel, a personal profile config). None is a first-party client library.
