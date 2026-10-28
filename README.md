@@ -64,6 +64,94 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Acheel is a company surfaced as a portfolio company of serena and added to the API Evangelist network as a stub for enrichment. Sector: fintech-insurtech. This profile is a lead awaiting the enrichment pipeline.
+Acheel is a French digital insurance company — a néo-assureur that carries its own insurance licence rather than broking someone else's. Founded in 2020 by Ralph Ruimy and Francky Défossé, it received its ACPR agrément and launched in 2021, and now reports more than 800,000 policyholders. ACHEEL SA (879 605 350 RCS Paris) underwrites; ACHEEL FRANCE (ORIAS 21003575) distributes. The range spans nine lines — habitation, auto, santé, animaux, PNO (propriétaire non occupant), emprunteur, scolaire, protection juridique and RC pro — sold 100% digitally, with a quote in about two minutes and subscription in five. Roughly 70% of revenue comes from B2B2C distribution: partner brokers are served under the Charlee brand (charlee.fr, broker portal "Acheel Omega" at back.charlee.fr) and partners embed a per-tenant white-label customer area served from *.widget.acheel.com. Acheel's own partner FAQ stated it makes its APIs available to partners ("nous mettons à votre disposition nos APIs afin de vous faire bénéficier de notre Tech et de nos produits"), but no developer portal, API reference, base URL or machine-readable specification is published anywhere on its public surface; API access travels with a brokerage partnership. Acheel is a certified B Corp.
 
-Source: portfolio company of [serena](https://github.com/api-evangelist/serena) — https://www.acheel.com/
+**Areas:** Company · Fintech Insurtech · Insurance · Insurtech · Digital Insurance · Home Insurance · Auto Insurance · Health Insurance · Pet Insurance · White Label · B2B2C · Embedded Insurance
+
+## Acheel on APIs.io
+
+Everything profiled for Acheel is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/acheel/](https://apis.io/providers/acheel/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Acheel Domain Security](https://apis.io/security/acheel/acheel-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Acheel Plans Pricing](https://apis.io/plans/acheel/acheel-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Acheel Rate Limits](https://apis.io/rate-limits/acheel/acheel-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.acheel.com/)
+- [Support](https://faq.acheel.com/fr)
+- [Terms of service](https://v2.acheel.com/terms-and-conditions)
+- [Privacy policy](https://v2.acheel.com/privacy)
+
+## API Evangelist rating
+
+**Kin Score 14.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 4.8 |
+| Access clarity | 27.6 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/acheel/](https://apis.io/providers/acheel/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Acheel: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/acheel/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
